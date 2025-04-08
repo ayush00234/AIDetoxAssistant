@@ -7,7 +7,6 @@ This assistant helps users maintain a healthy relationship with technology
 through mindful reminders, activity suggestions, and a dash of digital wisdom.
 Think of it as your personal Cal Newport with a sense of humor!
 """
-import os
 import requests
 import schedule
 import time
@@ -19,6 +18,17 @@ import io
 from flask import Flask, render_template, request, jsonify
 import spotipy # Added import
 import openai # Added import
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "🚀 Deployed successfully on Render!"
+
+if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))  # 👈 this is required!
+    app.run(host='0.0.0.0', port=port)         # 👈 this too!
 
 class DigitalDetoxAssistant:
     """
